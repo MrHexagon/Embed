@@ -2,8 +2,23 @@
 
 namespace Embed\Providers\OEmbed;
 
-class Twitter extends EndPoint implements EndPointInterface
+use Embed\Url;
+
+class Twitter extends OEmbedImplementation
 {
-    protected static $pattern = ['*.twitter.com/*', 'twitter.com/*'];
-    protected static $endPoint = 'https://publish.twitter.com/oembed';
+    /**
+     * {@inheritdoc}
+     */
+    public static function getEndPoint(Url $url)
+    {
+        return 'https://publish.twitter.com/oembed';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getPatterns()
+    {
+      return ['https?://*.twitter.com/*'];
+    }
 }
